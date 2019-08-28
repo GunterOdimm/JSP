@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move &apos;q01.jsp, q02.jsp, q03.jsp, result.jsp&apos; to &apos;get&apos;" description="Move 4 resources to &apos;get&apos;" destination="WebContent/get" element1="/04-WebHelper/WebContent/get/q01.jsp" element2="/04-WebHelper/WebContent/get/q02.jsp" element3="/04-WebHelper/WebContent/get/q03.jsp" element4="/04-WebHelper/WebContent/get/result.jsp" flags="7" id="org.eclipse.ltk.core.refactoring.move.resources" resources="4" stamp="1564017888943" updateReferences="true"/>
+</session>

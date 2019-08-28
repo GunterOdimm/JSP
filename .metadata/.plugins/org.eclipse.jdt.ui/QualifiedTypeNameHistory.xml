@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="study.model1.retrofit.model.phone"/>
+<fullyQualifiedTypeName name="study.model1.retrofit.service.KakaoSearchService"/>
+<fullyQualifiedTypeName name="retrofit2.http.Headers"/>
+<fullyQualifiedTypeName name="study.model1.retrofit.model.Book"/>
+<fullyQualifiedTypeName name="study.model1.retrofit.model.Image"/>
+<fullyQualifiedTypeName name="study.model1.helper.RetrofitHelper"/>
+<fullyQualifiedTypeName name="com.google.gson.annotations.SerializedName"/>
+<fullyQualifiedTypeName name="retrofit2.Retrofit"/>
+<fullyQualifiedTypeName name="retrofit2.http.GET"/>
+<fullyQualifiedTypeName name="retrofit2.Call"/>
+<fullyQualifiedTypeName name="study.model1.retrofit.model.SearchDailyboxOfficeList"/>
+<fullyQualifiedTypeName name="retrofit2.http.Query"/>
+<fullyQualifiedTypeName name="study.model1.mybatis.service.DepartmentService"/>
+<fullyQualifiedTypeName name="java.io.Reader"/>
+<fullyQualifiedTypeName name="org.apache.ibatis.io.Resources"/>
+<fullyQualifiedTypeName name="study.jsp.myschool.service.StudentService"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="study.jsp.myschool.model.StudentAVG"/>
+<fullyQualifiedTypeName name="java.util.Calendar"/>
+</qualifiedTypeNameHistroy>

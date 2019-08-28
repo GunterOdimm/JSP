@@ -1,0 +1,127 @@
+<%@page import="java.net.URLEncoder"%>
+<%@page import="study.model1.helper.PageData"%>
+<%@page import="java.util.List"%>
+<%@page import="study.model1.mybatis.service.impl.DepartmentServiceImpl"%>
+<%@page import="study.model1.mybatis.service.DepartmentService"%>
+<%@page import="study.model1.mybatis.MybatisConnectionFactory"%>
+<%@page import="org.apache.ibatis.session.SqlSession"%>
+<%@page import="study.model1.helper.WebHelper"%>
+<%@page import="study.model1.mybatis.model.Department"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%
+	WebHelper webHelper = WebHelper.getInstance(request, response);
+	SqlSession sqlSession = MybatisConnectionFactory.getSqlSession();
+	DepartmentService departmentService = new DepartmentServiceImpl(sqlSession);
+
+	String keyword = webHelper.getString("keyword", "");
+	int nowPage = webHelper.getInt("page", 1);
+	int totalCount = 0;
+	int listCount = 10;
+	int pageCount = 5;
+	
+	Department input = new Department();
+	input.setDname(keyword);
+	input.setLoc(keyword);
+
+	List<Department> output = null;
+	
+	PageData pageData = null;
+
+	try {
+		totalCount = departmentService.getDepartmentCount(input);
+		pageData = new PageData(nowPage, totalCount, listCount, pageCount);
+		Department.setOffset(pageData.getOffset());
+		Department.setListCount(pageData.getListCount());
+		
+		output = departmentService.getDepartmentList(input);
+	} catch (Exception e) {
+		webHelper.redirect(null, e.getLocalizedMessage());
+		sqlSession.close();
+		return;
+	}
+	
+	 sqlSession.close();
+%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>학과관리</h1>
+	<a href="dept_add.jsp">[학과추가]</a>
+
+	<form method="get" action="dept_list.jsp">
+		<label for="keyword">검색어: </label> 
+		<input type="search" name="keyword" id="keyword" placeholder="학과명 or 위치 검색"
+		 value="<%=keyword%>" />
+		<button type="submit">검색</button>
+	</form>
+	<hr />
+	<table border="1">
+		<thead>
+			<tr>
+				<th width="70" align="center">학과번호</th>
+				<th width="175" align="center">학과이름</th>
+				<th width="100" align="center">학과위치</th>
+			</tr>
+		</thead>
+		<tbody>
+			<%
+				if (output.size() == 0) {
+			%>
+			<tr>
+				<td colspan="3" align="center">조회결과가 없습니다.</td>
+			</tr>
+			<%
+				} else {
+					for (Department item : output) {
+						int deptno = item.getDeptno();
+						String dname = item.getDname();
+						String loc = item.getLoc();
+						
+						if (!keyword.equals("")) {
+							dname = dname.replace(keyword, "<mark>" + keyword + "</mark>");
+							loc = loc.replace(keyword, "<mark>" + keyword + "</mark>");
+						}
+			%>
+			<tr>
+				<td align="center"><%=deptno%></td>
+				<td align="center"><a href="dept_view.jsp?deptno=<%=deptno%>"><%=dname%></a></td>
+				<td align="center"><%=loc%></td>
+			</tr>
+			<%
+				} //end for
+				} //end if
+			%>
+		</tbody>
+	</table>
+	<%
+		keyword = URLEncoder.encode(keyword, "utf-8");
+		if (pageData.getPrevPage() > 0) {
+			String link = String.format("<a href='dept_list.jsp?page=%d&keyword=%s'>[이전]</a>",
+			pageData.getPrevPage(), keyword);
+			out.println(link);
+		} else {
+			out.println("[이전]");
+		}
+		for (int i = pageData.getStartPage(); i <= pageData.getEndPage(); i++) {
+			if (i == nowPage) {
+				out.println("<strong>[" + i + "]</strong>");
+			} else {
+				String link = String.format("<a href='dept_list.jsp?page=%d&keyword=%s'>[%d]</a>", i, keyword, i);
+				out.println(link);
+			}
+		}
+		if (pageData.getNextPage() > 0) {
+			String link = String.format("<a href='dept_list.jsp?page=%d&keyword=%s'>[다음]</a>",
+					pageData.getNextPage(), keyword);
+			out.println(link);
+		} else {
+			out.println("[다음]");
+		}
+	%>
+</body>
+</html>

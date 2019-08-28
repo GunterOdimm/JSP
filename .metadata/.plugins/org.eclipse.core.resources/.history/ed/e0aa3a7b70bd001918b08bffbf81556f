@@ -1,0 +1,67 @@
+<%@page import="java.util.Calendar"%>
+<%@page import="com.google.gson.Gson"%>
+<%@page import="java.util.HashMap"%>
+<%@page import="java.util.Map"%>
+<%@page import="java.net.URLEncoder"%>
+<%@page import="study.model1.helper.PageData"%>
+<%@page import="java.util.List"%>
+<%@page import="study.model1.mybatis.service.impl.DepartmentServiceImpl"%>
+<%@page import="study.model1.mybatis.service.DepartmentService"%>
+<%@page import="study.model1.mybatis.MybatisConnectionFactory"%>
+<%@page import="org.apache.ibatis.session.SqlSession"%>
+<%@page import="study.model1.helper.WebHelper"%>
+<%@page import="study.model1.mybatis.model.Department"%>
+<%@ page language="java" contentType="application/json; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%
+	WebHelper webHelper = WebHelper.getInstance(request, response);
+	SqlSession sqlSession = MybatisConnectionFactory.getSqlSession();
+	DepartmentService departmentService = new DepartmentServiceImpl(sqlSession);
+
+	String keyword = webHelper.getString("keyword", "");
+	int nowPage = webHelper.getInt("page", 1);
+	int totalCount = 0;
+	int listCount = 10;
+	int pageCount = 5;
+	
+	Department input = new Department();
+	input.setDname(keyword);
+	input.setLoc(keyword);
+	
+	//만들어지는 결과가 output에 저장된다 이를 map에 다가 할당에 출력만 하면 된다.
+	List<Department> output = null;
+	Calendar c = Calendar.getInstance();
+	String pubDate = String.format("%04d-%02d-%02d %02d:%02d:%02d", c.get(Calendar.YEAR),
+			c.get(Calendar.MONTH) + 1, c.get(Calendar.DAY_OF_MONTH), c.get(Calendar.HOUR_OF_DAY),
+			c.get(Calendar.MINUTE), c.get(Calendar.SECOND));
+
+	PageData pageData = null;
+
+	try {
+		totalCount = departmentService.getDepartmentCount(input);
+		pageData = new PageData(nowPage, totalCount, listCount, pageCount);
+
+		Department.setOffset(pageData.getOffset());
+		Department.setListCount(pageData.getListCount());
+
+		output = departmentService.getDepartmentList(input);
+	} catch (Exception e) {
+		webHelper.redirect(null, e.getLocalizedMessage());
+		sqlSession.close();
+		return;
+	}
+
+	sqlSession.close();
+
+	Map<String, Object> map = new HashMap<String, Object>();
+
+	map.put("rt", "OK");
+	map.put("item", output);
+	map.put("meta", pageData);
+
+	map.put("pubDate", pubDate);
+
+	Gson gson = new Gson();
+	String json = gson.toJson(map);
+	out.print(json);
+%>

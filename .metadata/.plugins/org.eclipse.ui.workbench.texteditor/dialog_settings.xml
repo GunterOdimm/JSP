@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item key="wrap" value="true"/>
+		<item key="casesensitive" value="false"/>
+		<item key="wholeword" value="false"/>
+		<item key="incremental" value="false"/>
+		<item key="isRegEx" value="false"/>
+		<item key="selection" value="printJson"/>
+		<list key="findhistory">
+			<item value="printJson"/>
+			<item value="pageData"/>
+			<item value="detpno"/>
+			<item value="department"/>
+			<item value="Department"/>
+			<item value="{데이터구조Beans}"/>
+			<item value="Student의 패키지.클래스이름"/>
+			<item value="salesAcc"/>
+			<item value="date"/>
+			<item value="&lt;%= request.getContextPath()%&gt;/assets/billboard.min."/>
+		</list>
+		<list key="replacehistory">
+			<item value="Student"/>
+			<item value="study.jsp.myschool.model.Student"/>
+			<item value="Department"/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="1523"/>
+		<item key="DIALOG_Y_ORIGIN" value="195"/>
+		<item key="DIALOG_WIDTH" value="288"/>
+		<item key="DIALOG_HEIGHT" value="391"/>
+		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
+	</section>
+</section>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="wizardPage">
+		<list key="groupId">
+			<item value="study.jsp.myschool"/>
+			<item value="study.model1.helper"/>
+			<item value="study.jsp.helper"/>
+			<item value="study.java.model"/>
+			<item value="03-CookieSession"/>
+			<item value="04-WebHelper"/>
+		</list>
+		<list key="name">
+			<item value="poom"/>
+		</list>
+		<list key="artifactId">
+			<item value="myschool"/>
+			<item value="BackUp"/>
+			<item value="123"/>
+			<item value="test2"/>
+			<item value="test"/>
+			<item value="04-WebHelper"/>
+			<item value="02-GetPost"/>
+			<item value="03-CookieSession"/>
+		</list>
+		<list key="version">
+			<item value="0.0.1-SNAPSHOT"/>
+		</list>
+	</section>
+	<section name="org.eclipse.m2e.core.pom.overview">
+	</section>
+	<section name="org.eclipse.m2e.core.pom.dependencies">
+	</section>
+</section>

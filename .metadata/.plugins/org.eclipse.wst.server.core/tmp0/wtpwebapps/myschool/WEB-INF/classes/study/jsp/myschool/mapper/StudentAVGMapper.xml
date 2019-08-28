@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="StudentMapperAVG">
+    <!-- Beans 클래스의 객체이름(id)과 클래스이름(type)을 명시한다. -->
+    <resultMap id="student" type="study.jsp.myschool.model.StudentAVG">
+        <!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
+        <result property="grade" column="grade" />
+        <result property="avg_height" column="avg_height" />
+        <result property="avg_weight" column="avg_weight" />
+    </resultMap>
+
+    <select id="selectAVG"
+    		parameterType="study.jsp.myschool.model.StudentAVG"
+    		resultMap="student">
+    		select grade, avg(height) as avg_height, avg(weight) avg_weight from student group by grade;
+	</select>
+</mapper>

@@ -1,0 +1,23 @@
+2019-07-19 13:50:58,261 DEBUG [org.apache.ibatis.logging.LogFactory] Logging initialized using 'class org.apache.ibatis.logging.log4j2.Log4j2Impl' adapter.
+2019-07-19 13:50:58,269 DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource] PooledDataSource forcefully closed/removed all connections.
+2019-07-19 13:50:58,270 DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource] PooledDataSource forcefully closed/removed all connections.
+2019-07-19 13:50:58,270 DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource] PooledDataSource forcefully closed/removed all connections.
+2019-07-19 13:50:58,270 DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource] PooledDataSource forcefully closed/removed all connections.
+2019-07-19 13:50:58,332 DEBUG [org.apache.ibatis.transaction.jdbc.JdbcTransaction] Opening JDBC Connection
+2019-07-19 13:50:58,517 DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource] Created connection 211968962.
+2019-07-19 13:50:58,518 DEBUG [org.apache.ibatis.transaction.jdbc.JdbcTransaction] Setting autocommit to false on JDBC Connection [com.mysql.jdbc.JDBC4Connection@ca263c2]
+2019-07-19 13:50:58,519 DEBUG [DepartmentMapper.get_department_list] ==>  Preparing: SELECT deptno, dname, loc FROM department; 
+2019-07-19 13:50:58,536 DEBUG [DepartmentMapper.get_department_list] ==> Parameters: 
+2019-07-19 13:50:58,548 DEBUG [DepartmentMapper.get_department_list] <==      Total: 9
+2019-07-19 13:50:58,549 DEBUG [Main03] 조회결과[0] >> Department [deptno=101, dname=인터넷통신학과, loc=7호관]
+2019-07-19 13:50:58,549 DEBUG [Main03] 조회결과[1] >> Department [deptno=102, dname=멀티미디어학과, loc=2호관]
+2019-07-19 13:50:58,549 DEBUG [Main03] 조회결과[2] >> Department [deptno=103, dname=인터넷정보과, loc=5호관]
+2019-07-19 13:50:58,549 DEBUG [Main03] 조회결과[3] >> Department [deptno=201, dname=미래전자공학과, loc=13호관]
+2019-07-19 13:50:58,549 DEBUG [Main03] 조회결과[4] >> Department [deptno=202, dname=기계공학과, loc=4호관]
+2019-07-19 13:50:58,549 DEBUG [Main03] 조회결과[5] >> Department [deptno=205, dname=현대미술학과, loc=9호관]
+2019-07-19 13:50:58,549 DEBUG [Main03] 조회결과[6] >> Department [deptno=206, dname=Java학과, loc=공학관]
+2019-07-19 13:50:58,550 DEBUG [Main03] 조회결과[7] >> Department [deptno=207, dname=Java학과, loc=공학관]
+2019-07-19 13:50:58,550 DEBUG [Main03] 조회결과[8] >> Department [deptno=208, dname=Java학과, loc=공학관]
+2019-07-19 13:50:58,550 DEBUG [org.apache.ibatis.transaction.jdbc.JdbcTransaction] Resetting autocommit to true on JDBC Connection [com.mysql.jdbc.JDBC4Connection@ca263c2]
+2019-07-19 13:50:58,550 DEBUG [org.apache.ibatis.transaction.jdbc.JdbcTransaction] Closing JDBC Connection [com.mysql.jdbc.JDBC4Connection@ca263c2]
+2019-07-19 13:50:58,550 DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource] Returned connection 211968962 to pool.

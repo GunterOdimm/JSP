@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move package &apos;study.jsp.helper&apos; to &apos;04-WebHelper2/src&apos;&#x0D;&#x0A;- Original project: &apos;test&apos;&#x0D;&#x0A;- Destination element: &apos;04-WebHelper2/src&apos;&#x0D;&#x0A;- Original element: &apos;test/src/study.jsp.helper&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move package" destination="=04-WebHelper2/src" element1="/src&lt;study.jsp.helper" flags="589830" fragments="1" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.movePackages" stamp="1564099116749" version="1.0"/>
+</session>

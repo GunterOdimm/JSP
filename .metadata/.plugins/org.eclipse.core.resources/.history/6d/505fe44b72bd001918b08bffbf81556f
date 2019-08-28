@@ -1,0 +1,38 @@
+<%@page import="java.util.Calendar"%>
+<%@page import="com.google.gson.Gson"%>
+<%@page import="java.util.HashMap"%>
+<%@page import="java.util.Map"%>
+<%@page import="study.model1.helper.WebHelper"%>
+<%@page import="org.apache.ibatis.session.SqlSession"%>
+<%@page import="study.model1.mybatis.MybatisConnectionFactory"%>
+<%@page import="study.model1.mybatis.service.impl.DepartmentServiceImpl"%>
+<%@page import="study.model1.mybatis.service.DepartmentService"%>
+<%@page import="study.model1.mybatis.model.Department"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ page trimDirectiveWhitespaces="true"%>
+<%
+	WebHelper webHelper = WebHelper.getInstance(request, response);
+	SqlSession sqlSession = MybatisConnectionFactory.getSqlSession();
+	DepartmentService departmentService = new DepartmentServiceImpl(sqlSession);
+	int deptno = webHelper.getInt("deptno");
+	
+	Department input = new Department();
+	input.setDeptno(deptno);
+	Department output = null;
+	
+
+	Map<String,Object> data = new HashMap<String,Object>();
+	try {
+		output = departmentService.getDepartmentItem(input);
+	} catch (Exception e) {
+		webHelper.printJson(e.getLocalizedMessage());
+		sqlSession.close();
+		return;
+	}
+	sqlSession.close();
+
+	data.put("item", output);
+	
+	webHelper.printJson(data);
+%>

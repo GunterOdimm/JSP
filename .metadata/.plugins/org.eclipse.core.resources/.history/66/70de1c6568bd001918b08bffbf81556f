@@ -1,0 +1,44 @@
+<%@page import="study.model1.helper.PageData"%>
+<%@page import="com.google.gson.Gson"%>
+<%@page import="java.util.HashMap"%>
+<%@page import="java.util.Map"%>
+<%@page import="study.model1.helper.WebHelper"%>
+<%@page import="org.apache.ibatis.session.SqlSession"%>
+<%@page import="study.model1.mybatis.MybatisConnectionFactory"%>
+<%@page import="study.model1.mybatis.service.impl.DepartmentServiceImpl"%>
+<%@page import="study.model1.mybatis.service.DepartmentService"%>
+<%@page import="study.model1.mybatis.model.Department"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ page trimDirectiveWhitespaces="true"%>
+<%
+	WebHelper webHelper = WebHelper.getInstance(request, response);
+	SqlSession sqlSession = MybatisConnectionFactory.getSqlSession();
+	DepartmentService departmentService = new DepartmentServiceImpl(sqlSession);
+	int deptno = webHelper.getInt("deptno");
+	if (deptno == 0) {
+		webHelper.redirect(null, "학과번호가 없습니다.");
+		return;
+	}
+	Department input = new Department();
+	input.setDeptno(deptno);
+	Department output = null;
+	try {
+		output = departmentService.getDepartmentItem(input);
+	} catch (Exception e) {
+		sqlSession.close();
+		webHelper.redirect(null, e.getLocalizedMessage());
+		return;
+	}
+	sqlSession.close();
+	 
+	Map<String,Object> map = new HashMap<String,Object>();
+
+	map.put("rt", "OK");
+	map.put("item", output);
+	map.put("meta", PageData);
+
+	Gson gson = new Gson();
+	String json = gson.toJson(map);
+	out.print(json);
+%>
